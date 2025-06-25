@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
 
+import '../services/pdf_download_service.dart';
+
 class ResumePDFScreen extends StatefulWidget {
   const ResumePDFScreen({super.key});
 
@@ -45,6 +47,44 @@ class _ResumePDFScreenState extends State<ResumePDFScreen> {
     super.dispose();
   }
 
+  Future<void> _downloadResume() async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Color(0xff194F82)),
+          ),
+        );
+      },
+    );
+    try {
+      final success = await PdfDownloadService.downloadResume();
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(success
+                ? 'Resume downloaded successfully!'
+                : 'Failed to download resume. Please try again.'),
+            backgroundColor: success ? const Color(0xff194F82) : Colors.red,
+          ),
+        );
+      }
+    } catch (e) {
+      if (context.mounted) {
+        Navigator.of(context).pop();
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +93,23 @@ class _ResumePDFScreenState extends State<ResumePDFScreen> {
         backgroundColor: const Color(0xff194F82),
         foregroundColor: Colors.white,
         elevation: 0,
+        actions: [
+          InkWell(
+            onTap: _downloadResume,
+            child: const Row(
+              children: [
+                Text('Download',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    )),
+                Icon(Icons.download, color: Colors.white),
+                SizedBox(width: 16),
+              ],
+            ),
+          ),
+        ],
       ),
       body: _buildBody(),
     );

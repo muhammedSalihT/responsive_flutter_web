@@ -1,4 +1,4 @@
-name: portfolio
+name: dev_salih
 description: A Flutter portfolio website.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -40,6 +40,8 @@ dependencies:
   lottie: ^3.1.0
   flutter_svg: ^2.0.7
   pdfx: ^2.6.0
+  path_provider: ^2.1.2
+  permission_handler: ^11.3.1
 
 # The following adds the Cupertino Icons font to your application.
 # Use with the CupertinoIcons class for iOS style icons.

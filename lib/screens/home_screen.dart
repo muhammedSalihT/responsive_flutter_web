@@ -80,11 +80,8 @@ class HomeScreen extends GetView<HomeController> {
             NestedScrollView(
               controller: controller.scrollController,
               headerSliverBuilder: (context, innerBoxIsScrolled) => [
-                const SliverAppBar(
-                  toolbarHeight: 80,
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  flexibleSpace: SizedBox.shrink(),
+                const SliverToBoxAdapter(
+                  child: SizedBox(height: 80),
                 ),
               ],
               body: SingleChildScrollView(

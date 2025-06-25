@@ -14,7 +14,7 @@ class HeroSection extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: isMobile ? 300 : 400,
-      margin: EdgeInsets.symmetric(horizontal: isMobile ? 48 : 50),
+      margin: EdgeInsets.symmetric(horizontal: isMobile ? 20 : 50),
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
@@ -47,25 +47,27 @@ class HeroSection extends StatelessWidget {
                   ),
                 ],
               ),
-              child: AnimatedTextKit(
-                animatedTexts: [
-                  TypewriterAnimatedText(
-                    'WELCOME TO MY DEV. WORLD...',
-                    speed: const Duration(milliseconds: 200),
-                  ),
-                  // FadeAnimatedText(
-                  //   'Cross-Platform',
-                  //   duration: const Duration(seconds: 2),
-                  //   fadeOutBegin: 0.8,
-                  //   fadeInEnd: 0.2,
-                  // ),
-                  // ScaleAnimatedText(
-                  //   'Mobile Developer',
-                  //   duration: const Duration(seconds: 2),
-                  // ),
-                ],
-                repeatForever: true,
-                pause: const Duration(milliseconds: 1000),
+              child: Center(
+                child: AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'WELCOME TO MY DEV. WORLD...',
+                      speed: const Duration(milliseconds: 200),
+                    ),
+                    // FadeAnimatedText(
+                    //   'Cross-Platform',
+                    //   duration: const Duration(seconds: 2),
+                    //   fadeOutBegin: 0.8,
+                    //   fadeInEnd: 0.2,
+                    // ),
+                    // ScaleAnimatedText(
+                    //   'Mobile Developer',
+                    //   duration: const Duration(seconds: 2),
+                    // ),
+                  ],
+                  repeatForever: true,
+                  pause: const Duration(milliseconds: 1000),
+                ),
               ),
             ),
           ),

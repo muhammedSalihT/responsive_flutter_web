@@ -1,7 +1,7 @@
+import 'package:dev_salih/constents/text.dart';
+import 'package:dev_salih/screens/resume_pdf_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:portfolio/constents/text.dart';
-import 'package:portfolio/screens/resume_pdf_screen.dart';
 
 import '../utils/responsive_helper.dart';
 
@@ -41,14 +41,7 @@ class Header extends StatelessWidget {
           ),
           Row(
             children: [
-              if (isMobile)
-                IconButton(
-                  icon: const Icon(Icons.menu),
-                  onPressed: () {
-                    scaffoldKey.currentState?.openEndDrawer();
-                  },
-                )
-              else
+              if (!isMobile)
                 Row(
                   children: [
                     _buildNavItem('About', onTap: () => onNavItemTap('about')),
@@ -81,6 +74,13 @@ class Header extends StatelessWidget {
                   ],
                 ),
               ),
+              if (isMobile)
+                IconButton(
+                  icon: const Icon(Icons.menu),
+                  onPressed: () {
+                    scaffoldKey.currentState?.openEndDrawer();
+                  },
+                )
             ],
           ),
         ],
