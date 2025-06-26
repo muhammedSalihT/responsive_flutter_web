@@ -23,7 +23,7 @@ class _PortfolioSectionState extends State<PortfolioSection> {
     {
       'title': 'Exam Winner Learing App',
       'description':
-          'Exam Winner App, The Ultimate Learning App Based On Kerala,India',
+          '50K+ Downloads In Both Playstore And Appstore With Average Of 5⭐ Rating. The Ultimate Learning App Based On Kerala,India',
       'imagePath': 'assets/images/examwinner.webp',
       'color': Color(0xFFF1F8E9),
       'play_url':
